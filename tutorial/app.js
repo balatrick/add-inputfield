@@ -1,30 +1,23 @@
-const xhr = new XMLHttpRequest();
+var formFeild = document.getElementById('formField');
 
-xhr.open('GET', './api/sample.txt');
+function add() {
 
+  const newField = document.createElement('input');
 
-xhr.onreadystatechange = function () {
-
-  if (xhr.readyState === 4 && xhr.status === 200) {
-
-    const text = document.createElement('p');
-
-    text.textContent = xhr.responseText;
-    document.body.appendChild(text)
-
-  }
-  else {
-
-    console.log({
-
-      'status': xhr.status,
-      'text': xhr.statusText,
-      'state': xhr.readyState
-    })
-  }
-
+  newField.setAttribute('type', 'text');
+  newField.setAttribute('name', 'text')
+  newField.setAttribute('class', 'text')
+  newField.setAttribute('size', 50);
+  newField.setAttribute('placeholder', 'optional Field');
+  formFeild.appendChild(newField);
 }
 
 
+function remove() {
+  var input_tags = document.getElementsByTagName('input')
+  if (input_tags.length > 2) {
 
-xhr.send();
+    formFeild.removeChild(input_tags[(input_tags.length) - 1]);
+  }
+
+}
